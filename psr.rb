@@ -1,19 +1,28 @@
-psr = {"paper" => 1,
-"scissors" => 2,
-"rock" => 3}
+psr = ["paper",
+"scissors",
+"rock"]
 
-puts "We're playing paper, scissors, rock, choose one."
+puts "We're playing paper, scissors, rock, choose one or 'stop' to stop"
 user_psr = gets.chomp.downcase
 
-psr.each_key do |a|
-    puts "You chose #{a.capitalize}" if user_psr == a
+psr_choose = Proc.new {psr.each do |a|
+    if user_psr == a
+        puts "You chose #{a.capitalize}"
+        puts "You're opponent chose #{psr.sample.capitalize}."
+end
 end
 
-rand_psr = rand(1..3)
-
-psr.each do |x,y| 
-    if rand_psr == y
-        puts "You're opponent chose #{x.capitalize}."         else
-        nil
-    end
+if user_psr == "stop"
+    break 
 end
+}
+
+psr_choose.call
+
+loop {
+    
+puts "We're playing paper, scissors, rock, choose one or 'stop' to stop"
+user_psr = gets.chomp.downcase
+
+psr_choose.call
+}
