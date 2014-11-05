@@ -4,13 +4,13 @@ psr = [:paper,
 :stop]
 
 RULES = {
-    :paper => {:paper => :draw, :scissors => :lose, :rock => :win},
-    :scissors => {:paper => :win, :scissors => :draw, :rock => :lose},
-    :rock => {:paper => :lose, :scissors => :win, :rock => :draw}
+  :paper => {:paper => :draw, :scissors => :lose, :rock => :win},
+  :scissors => {:paper => :win, :scissors => :draw, :rock => :lose},
+  :rock => {:paper => :lose, :scissors => :win, :rock => :draw}
 }
 
 def game(x,y)
-    RULES[x][y]
+  RULES[x][y]
 end
 
 user_psr = ""
@@ -20,8 +20,8 @@ opponent = [:paper,:scissors,:rock].sample
 outcome = game(user_psr,opponent)
 
 psr.each do |a|
-    if user_psr == a
-        puts "You chose #{user_psr.to_s.capitalize}. You're opponent chose #{opponent.to_s.capitalize}."
+  if user_psr == a
+    puts "You chose #{user_psr.to_s.capitalize}. You're opponent chose #{opponent.to_s.capitalize}."
     puts "You #{outcome.to_s.capitalize}!"
 end
 end
